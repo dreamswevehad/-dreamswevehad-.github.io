@@ -3,10 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Site</title>
+  <title>Dreams We've Had</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bpmf+Zihi+Kai+Std&family=DM+Serif+Text&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #131113;
+      --text: #EDE7DE;
+      --dim: #8A8480;
+      --accent: #B08D57;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Bpmf Zihi Kai Std', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    main {
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 1.4s ease-out forwards;
+    }
+
+    h1 {
+      font-family: 'DM Serif Text', serif;
+      font-weight: 400;
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      letter-spacing: 0.01em;
+      margin: 0 0 3.5rem 0;
+      line-height: 1.15;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.1rem;
+    }
+
+    nav a {
+      color: var(--dim);
+      text-decoration: none;
+      font-size: 1.05rem;
+      letter-spacing: 0.03em;
+      transition: color 0.25s ease;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      color: var(--accent);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      main {
+        animation: none;
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <p>My new site is under construction.</p>
+  <main>
+    <h1>Dreams We've Had</h1>
+    <nav>
+      <a href="shop.html">Shop</a>
+      <a href="lyrics.html">Lyrics</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </main>
 </body>
 </html>
