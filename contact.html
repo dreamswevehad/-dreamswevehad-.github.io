@@ -31,9 +31,9 @@
       font-family: 'Open Sans', sans-serif;
       display: flex;
       align-items: flex-start;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
-      padding: 64px 24px 24px;
+      padding: 64px 24px 24px 48px;
     }
 
     main {
@@ -42,13 +42,42 @@
       animation: fadeIn 1.4s ease-out forwards;
     }
 
-    h1 {
+    p {
       font-family: 'Open Sans', sans-serif;
       font-weight: 300;
-      font-size: clamp(1.1rem, 3vw, 1.6rem);
-      letter-spacing: 0.16em;
-      margin: 0 0 0.8rem 0;
-      line-height: 1.15;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      letter-spacing: 0.03em;
+      line-height: 1.6;
+      max-width: 32rem;
+      margin: 0 0 1rem 0;
+    }
+
+    ul {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 300;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      letter-spacing: 0.03em;
+      line-height: 1.6;
+      max-width: 32rem;
+      margin: 0 0 1.4rem 0;
+      padding-left: 1.2rem;
+      color: var(--dim);
+    }
+
+    li {
+      margin-bottom: 0.3rem;
+    }
+
+    a.email {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.25s ease;
+    }
+
+    a.email:hover,
+    a.email:focus-visible {
+      border-bottom-color: var(--accent);
     }
 
 
@@ -67,7 +96,20 @@
 </head>
 <body>
   <main>
-    <h1>Page under construction, please check back later</h1>
+    <p>Email: <a class="email" href="mailto:bennett@dreamswevehad.com">bennett@dreamswevehad.com</a></p>
+    <p>I am completely independent, so please direct all inquiries to the above email.</p>
+    <p>Acceptable types of inquiries:</p>
+    <ul>
+      <li>Booking/Sync or other business</li>
+      <li>Artistic collaboration ideas</li>
+      <li>Questions regarding when your order will arrive at your international destination</li>
+      <li>Technical questions about synthesizers or music production</li>
+      <li>Advice on how to make music good</li>
+      <li>General praise/love</li>
+      <li>Fishing expeditions for buying the rights to my discography</li>
+      <li>You are sad or something like that (I genuinely will talk to you)</li>
+    </ul>
+    <p>I truly appreciate everyone who has cherished my music, and especially those who have been helped in some way. If you write me an email, I will read it and try to respond timely. God Bless you all.</p>
   </main>
 </body>
 </html>
