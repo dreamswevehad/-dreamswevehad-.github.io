@@ -547,14 +547,20 @@ Blake Grainger and Chase Ketterling for performing drums and bass guitar, respec
     }
 
     function updateSongNav() {
-      if (trackListEl.getBoundingClientRect().bottom > 0) {
-        songNav.classList.remove('visible');
-        return;
+      const isVisible = songNav.classList.contains('visible');
+      if (!isVisible) {
+        if (trackListEl.getBoundingClientRect().bottom > 0) {
+          return;
+        }
+        songNav.classList.add('visible');
+      } else {
+        if (window.scrollY <= 1) {
+          songNav.classList.remove('visible');
+          return;
+        }
       }
-      songNav.classList.add('visible');
       const i = getCurrentSongIndex();
-      const atSongTop = songEls[i].getBoundingClientRect().top >= -4;
-      upBtn.disabled = (i === 0 && atSongTop);
+      upBtn.disabled = false;
       downBtn.disabled = i >= songEls.length - 1;
     }
 
@@ -579,6 +585,10 @@ Blake Grainger and Chase Ketterling for performing drums and bass guitar, respec
 
     upBtn.addEventListener('click', () => {
       const i = getCurrentSongIndex();
+      if (i === 0) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
       const atSongTop = songEls[i].getBoundingClientRect().top >= -4;
       goToSong(atSongTop ? i - 1 : i);
     });
