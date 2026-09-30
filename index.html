@@ -45,9 +45,9 @@
       animation: fadeIn 1.4s ease-out forwards;
     }
 
-    .home-photo {
+    .home-visual {
       display: block;
-      max-width: min(90vw, 520px);
+      max-width: min(90vw, 780px);
       width: 100%;
       height: auto;
       opacity: 0;
@@ -56,33 +56,11 @@
     }
 
     @media (min-width: 900px) {
-      .home-photo {
+      .home-visual {
         position: absolute;
         top: 150px;
         left: 360px;
-        max-width: min(58vw, 820px);
-      }
-    }
-
-    .home-verse {
-      display: block;
-      width: 140px;
-      height: auto;
-      image-orientation: none;
-      flex-shrink: 0;
-      margin-left: auto;
-      opacity: 0;
-      animation: fadeIn 1.4s ease-out forwards;
-      animation-delay: 0.5s;
-    }
-
-    @media (min-width: 900px) {
-      .home-verse {
-        position: absolute;
-        top: 150px;
-        left: calc(62px + min(58vw, 820px) / 2 + 50%);
-        width: 188px;
-        height: 614px;
+        max-width: min(58vw, 1100px);
       }
     }
 
@@ -128,7 +106,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       main,
-      .home-photo {
+      .home-visual {
         animation: none;
         opacity: 1;
       }
@@ -144,7 +122,6 @@
       <a href="contact/">Contact</a>
     </nav>
   </main>
-  <img class="home-photo" src="images/home-photo.jpg" alt="">
-  <img class="home-verse" src="images/home-verse.png" alt="何よりもまず、神の国と神の義を求めなさい。">
+  <img class="home-visual" src="images/home-visual.png" alt="何よりもまず、神の国と神の義を求めなさい。そうすれば、これらのものはみな加えて与えられる。">
 </body>
 </html>
