@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #131113;
+      --bg: #000000;
       --text: #EDE7DE;
       --dim: #8A8480;
       --accent: #B08D57;
@@ -30,16 +30,28 @@
       color: var(--text);
       font-family: 'Open Sans', sans-serif;
       display: flex;
+      flex-wrap: wrap;
       align-items: flex-start;
       justify-content: flex-start;
+      gap: 3rem;
       min-height: 100vh;
-      padding: 64px 24px 24px 48px;
+      padding: 64px 24px 48px 48px;
     }
 
     main {
       text-align: left;
       opacity: 0;
       animation: fadeIn 1.4s ease-out forwards;
+    }
+
+    .home-photo {
+      display: block;
+      max-width: min(90vw, 420px);
+      width: 100%;
+      height: auto;
+      opacity: 0;
+      animation: fadeIn 1.4s ease-out forwards;
+      animation-delay: 0.2s;
     }
 
     h1 {
@@ -83,7 +95,8 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      main {
+      main,
+      .home-photo {
         animation: none;
         opacity: 1;
       }
@@ -99,5 +112,6 @@
       <a href="contact/">Contact</a>
     </nav>
   </main>
+  <img class="home-photo" src="images/home-photo.jpg" alt="">
 </body>
 </html>
