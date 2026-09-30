@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #000000;
+      --bg: #131113;
       --text: #EDE7DE;
       --dim: #8A8480;
       --accent: #B08D57;
@@ -38,6 +38,22 @@
       min-height: 100vh;
       padding: 64px 48px 48px 48px;
       position: relative;
+    }
+
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: url('images/everything-and-you-bg.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .page-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(19, 17, 19, 0.6);
     }
 
     main {
@@ -155,6 +171,7 @@
   </style>
 </head>
 <body>
+  <div class="page-bg"></div>
   <main>
     <h1>Dreams We've Had</h1>
     <nav>
