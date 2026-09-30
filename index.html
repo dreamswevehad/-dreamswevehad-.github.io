@@ -36,6 +36,7 @@
       gap: 3rem;
       min-height: 100vh;
       padding: 64px 48px 48px 48px;
+      position: relative;
     }
 
     main {
@@ -52,6 +53,15 @@
       opacity: 0;
       animation: fadeIn 1.4s ease-out forwards;
       animation-delay: 0.2s;
+    }
+
+    @media (min-width: 900px) {
+      .home-photo {
+        position: absolute;
+        top: 150px;
+        left: 360px;
+        max-width: min(58vw, 820px);
+      }
     }
 
     h1 {
