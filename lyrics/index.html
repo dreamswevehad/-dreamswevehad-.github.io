@@ -33,6 +33,23 @@
       letter-spacing: 0.16em;
       min-height: 100vh;
       padding: 64px 24px 64px 48px;
+      position: relative;
+    }
+
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: url('../images/everything-and-you-bg.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .page-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(19, 17, 19, 0.6);
     }
 
     h1 {
@@ -85,6 +102,7 @@
   </style>
 </head>
 <body>
+  <div class="page-bg"></div>
   <h1>Lyrics</h1>
   <div class="albums">
     <a class="album-cover-link" href="dear-friend/">
