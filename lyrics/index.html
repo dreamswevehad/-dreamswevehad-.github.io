@@ -490,6 +490,17 @@ It empties me</p>
     document.querySelectorAll('[data-back]').forEach(btn => {
       btn.addEventListener('click', closeAlbum);
     });
+
+    document.querySelectorAll('.track-list a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
   </script>
 </body>
 </html>
