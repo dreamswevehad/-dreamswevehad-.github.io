@@ -64,6 +64,28 @@
       }
     }
 
+    .home-verse {
+      display: block;
+      width: 140px;
+      height: auto;
+      image-orientation: none;
+      flex-shrink: 0;
+      margin-left: auto;
+      opacity: 0;
+      animation: fadeIn 1.4s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    @media (min-width: 900px) {
+      .home-verse {
+        position: absolute;
+        top: 150px;
+        right: 48px;
+        width: 200px;
+        height: auto;
+      }
+    }
+
     h1 {
       font-family: 'Open Sans', sans-serif;
       font-weight: 300;
@@ -123,5 +145,6 @@
     </nav>
   </main>
   <img class="home-photo" src="images/home-photo.jpg" alt="">
+  <img class="home-verse" src="images/home-verse.png" alt="何よりもまず、神の国と神の義を求めなさい。">
 </body>
 </html>
