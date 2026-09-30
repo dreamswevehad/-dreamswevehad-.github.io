@@ -64,13 +64,15 @@
     .albums {
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-between;
       gap: 2rem;
       margin-top: 1.6rem;
     }
 
     .album-cover-link {
       display: block;
-      width: 200px;
+      flex: 1 1 200px;
+      max-width: 340px;
       text-decoration: none;
       color: inherit;
     }
