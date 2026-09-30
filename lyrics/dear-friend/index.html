@@ -122,6 +122,47 @@
     .credits p {
       white-space: pre-line;
     }
+
+    .song-nav {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 10;
+    }
+
+    .song-nav.visible {
+      display: flex;
+    }
+
+    .song-nav button {
+      background: none;
+      border: none;
+      padding: 4px;
+      margin: 0;
+      color: var(--dim);
+      cursor: pointer;
+      line-height: 0;
+      transition: color 0.25s ease, opacity 0.25s ease;
+    }
+
+    .song-nav button svg {
+      display: block;
+      stroke: currentColor;
+    }
+
+    .song-nav button:hover:not(:disabled),
+    .song-nav button:focus-visible:not(:disabled) {
+      color: var(--accent);
+    }
+
+    .song-nav button:disabled {
+      opacity: 0.25;
+      cursor: default;
+    }
   </style>
 </head>
 <body>
@@ -445,15 +486,58 @@ Special thanks to Kenzie Janson for performing vocals, and to
 Blake Grainger and Chase Ketterling for performing drums and bass guitar, respectively</p>
   </div>
 
+  <div class="song-nav" id="song-nav">
+    <button id="song-up" aria-label="Previous song">
+      <svg width="30" height="14" viewBox="0 0 30 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 12L15 2L28 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button id="song-down" aria-label="Next song">
+      <svg width="30" height="14" viewBox="0 0 30 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 2L15 12L28 2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+
   <script>
-    document.querySelectorAll('.track-list a').forEach(link => {
+    const songIds = Array.from(document.querySelectorAll('.track-list a')).map(a => a.getAttribute('href').slice(1));
+    const songEls = songIds.map(id => document.getElementById(id));
+
+    const songNav = document.getElementById('song-nav');
+    const upBtn = document.getElementById('song-up');
+    const downBtn = document.getElementById('song-down');
+    const trackListEl = document.querySelector('.track-list');
+
+    function getCurrentSongIndex() {
+      for (let i = 0; i < songEls.length; i++) {
+        if (songEls[i].getBoundingClientRect().bottom > 0) {
+          return i;
+        }
+      }
+      return songEls.length - 1;
+    }
+
+    function updateSongNav() {
+      if (trackListEl.getBoundingClientRect().bottom > 0) {
+        songNav.classList.remove('visible');
+        return;
+      }
+      songNav.classList.add('visible');
+      const i = getCurrentSongIndex();
+      const atSongTop = songEls[i].getBoundingClientRect().top >= -4;
+      upBtn.disabled = (i === 0 && atSongTop);
+      downBtn.disabled = i >= songEls.length - 1;
+    }
+
+    function goToSong(i) {
+      if (i < 0 || i >= songEls.length) return;
+      songEls[i].scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('.track-list a').forEach((link, i) => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        const targetId = link.getAttribute('href').slice(1);
-        const target = document.getElementById(targetId);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
+        goToSong(i);
       });
     });
 
@@ -463,6 +547,26 @@ Blake Grainger and Chase Ketterling for performing drums and bass guitar, respec
         window.history.back();
       }
     });
+
+    upBtn.addEventListener('click', () => {
+      const i = getCurrentSongIndex();
+      const atSongTop = songEls[i].getBoundingClientRect().top >= -4;
+      goToSong(atSongTop ? i - 1 : i);
+    });
+    downBtn.addEventListener('click', () => goToSong(getCurrentSongIndex() + 1));
+
+    let navTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!navTicking) {
+        window.requestAnimationFrame(() => {
+          updateSongNav();
+          navTicking = false;
+        });
+        navTicking = true;
+      }
+    }, { passive: true });
+
+    updateSongNav();
   </script>
 </body>
 </html>
