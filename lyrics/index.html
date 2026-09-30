@@ -65,9 +65,14 @@
       transition: opacity 0.25s ease;
     }
 
-    .album-cover-link:hover img,
     .album-cover-link:focus-visible img {
       opacity: 1;
+    }
+
+    @media (hover: hover) {
+      .album-cover-link:hover img {
+        opacity: 1;
+      }
     }
 
     .album-cover-link .album-title {
