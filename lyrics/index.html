@@ -79,12 +79,15 @@
 
     @media (max-width: 899px) {
       .albums {
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+        gap: 1.75rem 1.25rem;
       }
 
       .album-cover-link {
-        flex: 0 1 140px;
-        max-width: 140px;
+        width: 100%;
+        max-width: 160px;
       }
     }
 
