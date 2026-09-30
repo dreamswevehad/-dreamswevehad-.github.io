@@ -11,9 +11,9 @@
     :root {
       --bg: #131113;
       --text: #EDE7DE;
-      --dim: #8A8480;
+      --dim: #2B3940;
       --accent: #B08D57;
-      --link-hover: #C9C4BE;
+      --link-hover: #15191C;
     }
 
     * {
@@ -40,16 +40,16 @@
       position: fixed;
       inset: 0;
       z-index: -2;
-      background-image: url('../../images/i-will-make-my-own-bed-bg.jpg');
-      background-size: cover;
-      background-position: center;
+      background-color: #3F98D3;
     }
 
     .album-bg::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(19, 17, 19, 0.6);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.55;
+      mix-blend-mode: overlay;
     }
 
     h1, h2 {
