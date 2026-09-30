@@ -13,6 +13,7 @@
       --text: #EDE7DE;
       --dim: #8A8480;
       --accent: #B08D57;
+      --link-hover: #C9C4BE;
     }
 
     * {
@@ -85,9 +86,14 @@
       transition: color 0.25s ease;
     }
 
-    .back-link:hover,
     .back-link:focus-visible {
-      color: var(--accent);
+      color: var(--link-hover);
+    }
+
+    @media (hover: hover) {
+      .back-link:hover {
+        color: var(--link-hover);
+      }
     }
 
     .track-list {
@@ -110,9 +116,14 @@
       transition: color 0.25s ease;
     }
 
-    .track-list a:hover,
     .track-list a:focus-visible {
-      color: var(--accent);
+      color: var(--link-hover);
+    }
+
+    @media (hover: hover) {
+      .track-list a:hover {
+        color: var(--link-hover);
+      }
     }
 
     .song {
@@ -170,12 +181,12 @@
     }
 
     .song-nav button:focus-visible:not(:disabled) {
-      color: var(--accent);
+      color: var(--link-hover);
     }
 
     @media (hover: hover) {
       .song-nav button:hover:not(:disabled) {
-        color: var(--accent);
+        color: var(--link-hover);
       }
     }
 
