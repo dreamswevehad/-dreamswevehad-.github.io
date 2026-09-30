@@ -46,9 +46,9 @@
       font-family: 'Open Sans', sans-serif;
       font-weight: 300;
       font-size: clamp(1rem, 2.5vw, 1.2rem);
-      letter-spacing: 0.06em;
+      letter-spacing: 0.16em;
       line-height: 1.6;
-      max-width: 32rem;
+      max-width: min(90%, 60rem);
       margin: 0 0 1rem 0;
     }
 
@@ -56,16 +56,21 @@
       font-family: 'Open Sans', sans-serif;
       font-weight: 300;
       font-size: clamp(1rem, 2.5vw, 1.2rem);
-      letter-spacing: 0.06em;
+      letter-spacing: 0.16em;
       line-height: 1.6;
-      max-width: 32rem;
+      max-width: min(90%, 60rem);
       margin: 0 0 1.4rem 0;
       padding-left: 1.2rem;
       color: var(--dim);
+      list-style-type: none;
     }
 
     li {
       margin-bottom: 0.3rem;
+    }
+
+    li::before {
+      content: "\2013  ";
     }
 
     a.email {
@@ -99,12 +104,11 @@
     <p>Email: <a class="email" href="mailto:bennett@dreamswevehad.com">bennett@dreamswevehad.com</a></p>
     <p>I am completely independent, so please direct all inquiries to the above email.</p>
     <p>Acceptable types of inquiries:</p>
-    <ul class="dashed-list">
+    <ul>
       <li>Booking/Sync or other business</li>
       <li>Artistic collaboration ideas</li>
       <li>Questions regarding when your order will arrive at your international destination</li>
       <li>Technical questions about synthesizers or music production</li>
-      <li>Advice on how to make music good</li>
       <li>General praise/love</li>
       <li>Fishing expeditions for buying the rights to my discography</li>
       <li>You are sad or something like that (I genuinely will talk to you)</li>
