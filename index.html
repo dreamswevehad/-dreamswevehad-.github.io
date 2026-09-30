@@ -34,7 +34,7 @@
       align-items: flex-start;
       align-content: flex-start;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 1.75rem;
       min-height: 100vh;
       padding: 64px 48px 48px 48px;
       position: relative;
@@ -60,8 +60,45 @@
       .home-visual {
         position: absolute;
         top: 150px;
-        left: 360px;
+        left: 560px;
         max-width: min(58vw, 1100px);
+      }
+    }
+
+    .home-divider-h {
+      display: block;
+      width: min(80vw, 700px);
+      height: 1px;
+      background: var(--dim);
+      opacity: 0;
+      border: none;
+      margin: 0;
+      animation: fadeIn 1.4s ease-out forwards;
+      animation-delay: 0.1s;
+    }
+
+    @media (min-width: 900px) {
+      .home-divider-h {
+        display: none;
+      }
+    }
+
+    .home-divider-v {
+      display: none;
+    }
+
+    @media (min-width: 900px) {
+      .home-divider-v {
+        display: block;
+        position: absolute;
+        top: 150px;
+        left: 520px;
+        width: 1px;
+        height: calc(min(58vw, 1100px) / 1.772);
+        background: var(--dim);
+        opacity: 0;
+        animation: fadeIn 1.4s ease-out forwards;
+        animation-delay: 0.1s;
       }
     }
 
@@ -107,7 +144,9 @@
 
     @media (prefers-reduced-motion: reduce) {
       main,
-      .home-visual {
+      .home-visual,
+      .home-divider-h,
+      .home-divider-v {
         animation: none;
         opacity: 1;
       }
@@ -123,6 +162,8 @@
       <a href="contact/">Contact</a>
     </nav>
   </main>
+  <hr class="home-divider-h">
+  <div class="home-divider-v"></div>
   <img class="home-visual" src="images/home-visual.png" alt="何よりもまず、神の国と神の義を求めなさい。そうすれば、これらのものはみな加えて与えられる。">
 </body>
 </html>
