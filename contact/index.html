@@ -34,6 +34,23 @@
       justify-content: flex-start;
       min-height: 100vh;
       padding: 64px 24px 24px 48px;
+      position: relative;
+    }
+
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: url('../images/everything-and-you-bg.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .page-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(19, 17, 19, 0.6);
     }
 
     main {
@@ -104,6 +121,7 @@
   </style>
 </head>
 <body>
+  <div class="page-bg"></div>
   <main>
     <p>Email: <a class="email" href="mailto:bennett@dreamswevehad.com">bennett@dreamswevehad.com</a></p>
     <p>I am completely independent, so please direct all inquiries to the above email.</p>
