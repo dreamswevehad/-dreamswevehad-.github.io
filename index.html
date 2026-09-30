@@ -46,6 +46,10 @@
       animation: fadeIn 1.4s ease-out forwards;
     }
 
+    .home-visual-wrap {
+      display: contents;
+    }
+
     .home-visual {
       display: block;
       max-width: min(90vw, 780px);
@@ -54,15 +58,6 @@
       opacity: 0;
       animation: fadeIn 1.4s ease-out forwards;
       animation-delay: 0.2s;
-    }
-
-    @media (min-width: 900px) {
-      .home-visual {
-        position: absolute;
-        top: 64px;
-        left: 520px;
-        max-width: min(58vw, 1100px);
-      }
     }
 
     .home-divider-h {
@@ -77,24 +72,31 @@
       animation-delay: 0.1s;
     }
 
-    @media (min-width: 900px) {
-      .home-divider-h {
-        display: none;
-      }
-    }
-
     .home-divider-v {
       display: none;
     }
 
     @media (min-width: 900px) {
-      .home-divider-v {
-        display: block;
+      .home-divider-h {
+        display: none;
+      }
+
+      .home-visual-wrap {
+        display: flex;
+        align-items: stretch;
         position: absolute;
         top: 64px;
         left: 480px;
+      }
+
+      .home-visual {
+        max-width: min(58vw, 1100px);
+        margin-left: 40px;
+      }
+
+      .home-divider-v {
+        display: block;
         width: 1px;
-        height: calc(min(58vw, 1100px) / 1.772);
         background: var(--dim);
         opacity: 0;
         animation: fadeIn 1.4s ease-out forwards;
@@ -163,7 +165,9 @@
     </nav>
   </main>
   <hr class="home-divider-h">
-  <div class="home-divider-v"></div>
-  <img class="home-visual" src="images/home-visual.png" alt="何よりもまず、神の国と神の義を求めなさい。そうすれば、これらのものはみな加えて与えられる。">
+  <div class="home-visual-wrap">
+    <div class="home-divider-v"></div>
+    <img class="home-visual" src="images/home-visual.png" alt="何よりもまず、神の国と神の義を求めなさい。そうすれば、これらのものはみな加えて与えられる。">
+  </div>
 </body>
 </html>
