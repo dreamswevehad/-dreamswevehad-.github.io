@@ -60,6 +60,15 @@
       animation-delay: 0.2s;
     }
 
+    @media (min-width: 900px) {
+      .home-visual {
+        position: absolute;
+        top: 64px;
+        left: 520px;
+        max-width: min(58vw, 1100px);
+      }
+    }
+
     .home-divider-h {
       display: block;
       width: min(80vw, 700px);
@@ -81,21 +90,11 @@
         display: none;
       }
 
-      .home-visual-wrap {
-        display: flex;
-        align-items: stretch;
+      .home-divider-v {
+        display: block;
         position: absolute;
         top: 64px;
         left: 480px;
-      }
-
-      .home-visual {
-        max-width: min(58vw, 1100px);
-        margin-left: 40px;
-      }
-
-      .home-divider-v {
-        display: block;
         width: 1px;
         background: var(--dim);
         opacity: 0;
@@ -166,8 +165,25 @@
   </main>
   <hr class="home-divider-h">
   <div class="home-visual-wrap">
-    <div class="home-divider-v"></div>
-    <img class="home-visual" src="images/home-visual.png" alt="何よりもまず、神の国と神の義を求めなさい。そうすれば、これらのものはみな加えて与えられる。">
+    <div class="home-divider-v" id="home-divider-v"></div>
+    <img class="home-visual" id="home-visual" src="images/home-visual.png" alt="何よりもまず、神の国と神の義を求めなさい。そうすれば、これらのものはみな加えて与えられる。">
   </div>
+  <script>
+    (function () {
+      var img = document.getElementById('home-visual');
+      var line = document.getElementById('home-divider-v');
+
+      function syncLineHeight() {
+        line.style.height = img.offsetHeight + 'px';
+      }
+
+      if (img.complete) {
+        syncLineHeight();
+      } else {
+        img.addEventListener('load', syncLineHeight);
+      }
+      window.addEventListener('resize', syncLineHeight);
+    })();
+  </script>
 </body>
 </html>
