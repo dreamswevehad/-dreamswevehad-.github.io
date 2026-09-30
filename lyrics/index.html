@@ -22,52 +22,467 @@
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
+      min-height: 100%;
     }
 
     body {
       background: var(--bg);
       color: var(--text);
       font-family: 'Open Sans', sans-serif;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
+      font-weight: 300;
+      letter-spacing: 0.16em;
       min-height: 100vh;
-      padding: 64px 24px 24px;
+      padding: 64px 24px 64px 48px;
     }
 
-    main {
-      text-align: left;
+    /* Fixed background layer used only in album view */
+    .album-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-size: cover;
+      background-position: center;
       opacity: 0;
-      animation: fadeIn 1.4s ease-out forwards;
+      transition: opacity 0.5s ease;
+    }
+
+    .album-bg.active {
+      opacity: 1;
+    }
+
+    .album-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(19, 17, 19, 0.6);
+    }
+
+    h1, h2 {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.16em;
+      line-height: 1.3;
+      margin: 0 0 1.6rem 0;
     }
 
     h1 {
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 300;
-      font-size: clamp(1.1rem, 3vw, 1.6rem);
-      letter-spacing: 0.16em;
-      margin: 0 0 0.8rem 0;
-      line-height: 1.15;
+      font-size: clamp(1.3rem, 3.5vw, 2rem);
     }
 
+    h2 {
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+    }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to   { opacity: 1; transform: translateY(0); }
+    p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      line-height: 1.6;
+      max-width: min(90%, 60rem);
+      margin: 0 0 1rem 0;
+    }
+
+    /* ---------- Grid view (album covers) ---------- */
+
+    #grid-view .albums {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1.6rem;
+    }
+
+    .album-cover-link {
+      display: block;
+      width: 200px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      text-align: left;
+      font-family: inherit;
+      color: inherit;
+    }
+
+    .album-cover-link img {
+      width: 100%;
+      display: block;
+      opacity: 0.9;
+      transition: opacity 0.25s ease;
+    }
+
+    .album-cover-link:hover img,
+    .album-cover-link:focus-visible img {
+      opacity: 1;
+    }
+
+    .album-cover-link .album-title {
+      display: block;
+      margin-top: 0.8rem;
+      font-size: 1rem;
+      color: var(--dim);
+    }
+
+    /* ---------- Album view ---------- */
+
+    .album-view {
+      display: none;
+    }
+
+    .album-view.active {
+      display: block;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: var(--dim);
+      text-decoration: none;
+      font-size: 1rem;
+      letter-spacing: 0.16em;
+      margin-bottom: 2.4rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      padding: 0;
+    }
+
+    .back-link:hover,
+    .back-link:focus-visible {
+      color: var(--accent);
+    }
+
+    .track-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 3rem 0;
+      max-width: min(90%, 60rem);
+    }
+
+    .track-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .track-list a {
+      color: var(--dim);
+      text-decoration: none;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      letter-spacing: 0.16em;
+      transition: color 0.25s ease;
+    }
+
+    .track-list a:hover,
+    .track-list a:focus-visible {
+      color: var(--accent);
+    }
+
+    .song {
+      margin-bottom: 4rem;
+      scroll-margin-top: 2rem;
+    }
+
+    .song p {
+      white-space: pre-line;
     }
 
     @media (prefers-reduced-motion: reduce) {
-      main {
-        animation: none;
-        opacity: 1;
+      .album-bg {
+        transition: none;
       }
     }
   </style>
 </head>
 <body>
-  <main>
-    <h1>Page under construction, please check back later</h1>
-  </main>
+
+  <div class="album-bg" id="album-bg"></div>
+
+  <!-- ============ GRID VIEW ============ -->
+  <div id="grid-view">
+    <h1>Lyrics</h1>
+    <div class="albums">
+      <button class="album-cover-link" data-album="everything-and-you">
+        <img src="../images/everything-and-you-cover.jpg" alt="Everything And You album cover">
+        <span class="album-title">Everything And You</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ============ ALBUM VIEW: Everything And You ============ -->
+  <div class="album-view" id="album-everything-and-you" data-bg="../images/everything-and-you-bg.jpg">
+    <button class="back-link" data-back>&larr; All albums</button>
+    <h1>Everything And You (2019)</h1>
+
+    <ol class="track-list">
+      <li><a href="#aiyana-come-down">Aiyana (come down)</a></li>
+      <li><a href="#darling">Darling</a></li>
+      <li><a href="#news-from-the-war">News From The War</a></li>
+      <li><a href="#nothing-compares-to-you">Nothing Compares To You</a></li>
+      <li><a href="#a-song-i-wrote-for-you">A song I wrote for you when we were falling in love</a></li>
+      <li><a href="#benny-boy">Benny Boy (a beautiful embrace)</a></li>
+      <li><a href="#you-can-always-kill-yourself-tomorrow">You can always kill yourself tomorrow</a></li>
+      <li><a href="#perfectly-out-of-place">Perfectly Out Of Place</a></li>
+      <li><a href="#it-all-feels-the-same">it all feels the same</a></li>
+    </ol>
+
+    <div class="song" id="aiyana-come-down">
+      <h2>Aiyana (come down)</h2>
+      <p>I can’t get you off my mind, my mind
+Yea, you keep me up all night, all night
+You said that we’re different now, ok
+You said that it’s too late now, ok
+I can’t seem to keep things straight, oh no
+You loved me now it’s time for change, ok
+I thought I wanted us to change, ok
+But now I really have to say, to say
+
+That you still cross my mind
+Every time I close my eyes
+You still cross my mind
+Every time I close my eyes</p>
+    </div>
+
+    <div class="song" id="darling">
+      <h2>Darling</h2>
+      <p>Softly
+Lovely
+Slowly you fade
+Hold me
+Darling
+Sometime, once more
+
+You’re glimmering in an empty ocean hue
+Devine, you tonight
+Endless sea, devour what’s left of me
+Awaiting, arms open wide
+
+Softly
+Lovely
+Slowly you fade
+Hold me
+Darling
+Sometime, once more
+
+Suddenly, with one glance I’m undone
+No pain
+No memories
+You’re glimmering
+You’re levitating me
+No pain
+No memories
+
+Softly
+Lovely
+Slowly you fade
+Hold me
+Darling
+Sometime, once more</p>
+    </div>
+
+    <div class="song" id="news-from-the-war">
+      <h2>News From The War</h2>
+      <p>Time standstill,
+In a perfect afternoon
+Deep in you, my dear
+And since I’m floating here,
+In this perfect vacuum
+Covered by my fears
+
+News from the war
+I heard nothing
+I hope you’re safe
+Have you lost a friend?
+Have you lost your way?
+I’m still here
+
+Found myself
+One lonely afternoon
+You were standing there
+Is this a dream or just some lovely point of view?
+Still you’re standing there
+
+News from the war
+I heard nothing
+I hope you’re safe
+Have you lost a friend?
+Have you lost your way?
+I’m still here</p>
+    </div>
+
+    <div class="song" id="nothing-compares-to-you">
+      <h2>Nothing Compares To You</h2>
+      <p>Nothing compares to you
+And I’ll be
+Your empty room
+A lovely blue
+And I’m
+In love with you
+I still need you</p>
+    </div>
+
+    <div class="song" id="a-song-i-wrote-for-you">
+      <h2>A song I wrote for you when we were falling in love</h2>
+      <p>(no lyrics)</p>
+    </div>
+
+    <div class="song" id="benny-boy">
+      <h2>Benny Boy (a beautiful embrace)</h2>
+      <p>Sometimes I get so lost
+Thinking of you
+And how it felt before the end
+Just to be in your arms
+
+It’s been a month and I still can’t sleep much anymore
+I’ve given up on being me,
+Just let me sit and breathe
+Please, please don’t leave
+Please, come back to me
+
+Medicate in every way,
+But I still feel pain
+Benny Boy, when did you leave?
+This isn’t me
+
+Suicide (it felt nice)
+Woke up in ER
+I felt the breeze, but it left me
+Somehow I’m still here
+
+Please, please don’t leave
+Please, come back to me</p>
+    </div>
+
+    <div class="song" id="you-can-always-kill-yourself-tomorrow">
+      <h2>You can always kill yourself tomorrow</h2>
+      <p>Fall asleep
+It always leaves you empty
+Strobe lights and paradise
+Please don’t leave me paralyzed
+
+And don’t forget
+How you fell for me
+So sleep alright
+A quiet subversion, anyway
+And I’ll be gone before you wake</p>
+    </div>
+
+    <div class="song" id="perfectly-out-of-place">
+      <h2>Perfectly Out Of Place</h2>
+      <p>Take me back
+Where I was your only friend
+Well, I was
+Patiently waiting on your response
+You’re perfectly out of place
+
+You say, “If I can’t love myself, then how the hell can I try to love you?”
+Did you forget how it first felt,
+Or did you feel nothing when I held on to you?
+You’re perfectly out of place
+You’re perfectly out of place
+
+It made me want to hurt myself,
+But I would never do that to you
+But I still thought it through
+Sleep tonight and think this through
+You are the only one that I care about
+You’re perfectly out of place
+
+And you’re so beautiful
+I wish I could reach out and touch you
+Soft skin
+Your lips
+I could die, I could die
+And never cry again
+
+Soft skin
+Your lips
+I could die, I could die
+And never cry again
+
+And I’ll just say it outright
+I won’t try to be poetic or silly
+I cut myself on the bathroom floor with scissors, and I bled
+I couldn’t reconcile the pain I had so I made myself breathe a new way
+And I tried to hide my scars,
+But when you saw the bloodstains on my bedsheets you said “What’s wrong”
+And held me
+And I felt loved
+And I felt loved for the first time in what seemed like forever
+And as you grasped me tight, I felt like I was in the arms of God
+And there I wailed
+And there I wailed
+
+You’re perfectly out of place</p>
+    </div>
+
+    <div class="song" id="it-all-feels-the-same">
+      <h2>it all feels the same</h2>
+      <p>I can’t quite explain
+How I’ve been feeling
+Both of us know
+I’ve been unfolding
+
+Holding you near,
+I’ll sit in silence
+Holding you here,
+Your beauty unveiling
+Yea, it hurts
+Or it all feels the same
+
+I didn’t know
+That I was so loved
+You sought the good,
+While I was a monster
+I felt alone,
+But you were with me
+You opened my heart,
+So I could be free
+Yea, it hurts
+Or it all feels the same
+
+Yea, it hurts
+But I love you the same
+I love you the same
+I love you the same
+
+Sinking deep
+Comfort me
+Mercies seep
+It empties me</p>
+    </div>
+
+  </div>
+
+  <script>
+    const gridView = document.getElementById('grid-view');
+    const albumBg = document.getElementById('album-bg');
+    const albumViews = document.querySelectorAll('.album-view');
+
+    function openAlbum(id) {
+      const view = document.getElementById('album-' + id);
+      if (!view) return;
+
+      gridView.style.display = 'none';
+      albumViews.forEach(v => v.classList.remove('active'));
+      view.classList.add('active');
+
+      const bgUrl = view.getAttribute('data-bg');
+      albumBg.style.backgroundImage = 'url(' + bgUrl + ')';
+      albumBg.classList.add('active');
+
+      window.scrollTo(0, 0);
+    }
+
+    function closeAlbum() {
+      albumViews.forEach(v => v.classList.remove('active'));
+      albumBg.classList.remove('active');
+      gridView.style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
+    document.querySelectorAll('.album-cover-link').forEach(btn => {
+      btn.addEventListener('click', () => openAlbum(btn.getAttribute('data-album')));
+    });
+
+    document.querySelectorAll('[data-back]').forEach(btn => {
+      btn.addEventListener('click', closeAlbum);
+    });
+  </script>
 </body>
 </html>
