@@ -137,7 +137,7 @@
 
   <div class="album-bg"></div>
 
-  <a class="back-link" href="../">&larr; Back to Discography</a>
+  <a class="back-link" href="../" id="back-link">&larr; Back to Discography</a>
   <h1>Everything And You (2019)</h1>
 
   <ol class="track-list">
@@ -396,6 +396,13 @@ Artwork by Keegan Burckhard</p>
           target.scrollIntoView({ behavior: 'smooth' });
         }
       });
+    });
+
+    document.getElementById('back-link').addEventListener('click', (e) => {
+      if (window.history.length > 1) {
+        e.preventDefault();
+        window.history.back();
+      }
     });
   </script>
 </body>
