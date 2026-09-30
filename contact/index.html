@@ -79,9 +79,14 @@
       border-bottom: 1px solid transparent;
     }
 
-    a.email:hover,
     a.email:focus-visible {
       border-bottom-color: var(--dim);
+    }
+
+    @media (hover: hover) {
+      a.email:hover {
+        border-bottom-color: var(--dim);
+      }
     }
 
 
