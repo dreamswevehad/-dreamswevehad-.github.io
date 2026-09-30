@@ -31,9 +31,26 @@
       font-family: 'Open Sans', sans-serif;
       display: flex;
       align-items: flex-start;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
-      padding: 64px 24px 24px;
+      padding: 64px 24px 24px 48px;
+      position: relative;
+    }
+
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: url('../images/everything-and-you-bg.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .page-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(19, 17, 19, 0.6);
     }
 
     main {
@@ -51,7 +68,6 @@
       line-height: 1.15;
     }
 
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(6px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -66,6 +82,7 @@
   </style>
 </head>
 <body>
+  <div class="page-bg"></div>
   <main>
     <h1>Page under construction, please check back later</h1>
   </main>
