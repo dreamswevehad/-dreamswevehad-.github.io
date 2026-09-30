@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>I Will Make My Own Bed — Dreams We've Had</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #131113;
+      --text: #EDE7DE;
+      --dim: #8A8480;
+      --accent: #B08D57;
+      --link-hover: #C9C4BE;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.16em;
+      min-height: 100vh;
+      padding: 64px 24px 64px 48px;
+    }
+
+    .album-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: url('../../images/i-will-make-my-own-bed-bg.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .album-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(19, 17, 19, 0.6);
+    }
+
+    h1, h2 {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.16em;
+      line-height: 1.3;
+      margin: 0 0 1.6rem 0;
+      font-style: italic;
+    }
+
+    h1 {
+      font-size: clamp(1.1rem, 2.8vw, 1.6rem);
+    }
+
+    h2 {
+      font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+    }
+
+    p {
+      font-size: clamp(0.85rem, 2.2vw, 1rem);
+      line-height: 1.6;
+      max-width: min(90%, 60rem);
+      margin: 0 0 1rem 0;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: var(--dim);
+      text-decoration: none;
+      font-size: 1rem;
+      letter-spacing: 0.16em;
+      margin-bottom: 2.4rem;
+      transition: color 0.25s ease;
+    }
+
+    .back-link:focus-visible {
+      color: var(--link-hover);
+    }
+
+    @media (hover: hover) {
+      .back-link:hover {
+        color: var(--link-hover);
+      }
+    }
+
+    .track-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 3rem 0;
+      max-width: min(90%, 60rem);
+    }
+
+    .track-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .track-list a {
+      color: var(--dim);
+      text-decoration: none;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      letter-spacing: 0.16em;
+      transition: color 0.25s ease;
+    }
+
+    .track-list a:focus-visible {
+      color: var(--link-hover);
+    }
+
+    @media (hover: hover) {
+      .track-list a:hover {
+        color: var(--link-hover);
+      }
+    }
+
+    .song {
+      margin-bottom: 4rem;
+      scroll-margin-top: 2rem;
+    }
+
+    .song p {
+      white-space: pre-line;
+    }
+
+    .credits {
+      margin-top: 2rem;
+    }
+
+    .credits p {
+      white-space: pre-line;
+    }
+
+    .song-nav {
+      position: fixed;
+      right: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 10;
+    }
+
+    @media (min-width: 768px) {
+      .song-nav {
+        right: 56px;
+      }
+    }
+
+    .song-nav.visible {
+      display: flex;
+    }
+
+    .song-nav button {
+      background: none;
+      border: none;
+      padding: 4px;
+      margin: 0;
+      color: var(--dim);
+      cursor: pointer;
+      line-height: 0;
+      transition: color 0.25s ease, opacity 0.25s ease;
+    }
+
+    .song-nav button svg {
+      display: block;
+      stroke: currentColor;
+    }
+
+    .song-nav button:focus-visible:not(:disabled) {
+      color: var(--link-hover);
+    }
+
+    @media (hover: hover) {
+      .song-nav button:hover:not(:disabled) {
+        color: var(--link-hover);
+      }
+    }
+
+    .song-nav button:disabled {
+      opacity: 0.25;
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="album-bg"></div>
+
+  <a class="back-link" href="../" id="back-link">&larr; Back to Discography</a>
+  <h1>I Will Make My Own Bed (2021)</h1>
+
+  <ol class="track-list">
+    <li><a href="#so-she-did-know">So She Did Know</a></li>
+    <li><a href="#it-hurts-me">It Hurts Me</a></li>
+    <li><a href="#acid-airplane">Acid Airplane</a></li>
+    <li><a href="#61">61</a></li>
+    <li><a href="#like-dirt-we-will-wash-away">Like Dirt, We Will Wash Away And Become One With The Sunset</a></li>
+    <li><a href="#soft-light-closure">Soft Light Closure</a></li>
+    <li><a href="#my-own-bed">My Own Bed</a></li>
+    <li><a href="#cowboy-season">Cowboy Season</a></li>
+    <li><a href="#the-world-as-will-and-representation">The World As Will And Representation</a></li>
+    <li><a href="#something-infinite">Something Infinite</a></li>
+    <li><a href="#abstract-fourier-mathematics">Abstract Fourier Mathematics</a></li>
+    <li><a href="#i-saw-the-waves-crashing-down">I Saw The Waves Crashing Down And I Was Still</a></li>
+    <li><a href="#body-undersea">Body Undersea</a></li>
+    <li><a href="#everything-always">Everything Always</a></li>
+  </ol>
+
+  <div class="song" id="so-she-did-know">
+    <h2>So She Did Know</h2>
+    <p>So she was there in my life
+I can't fall asleep one night
+
+So she did know
+I did not know, oh
+So she did know
+I did not know, oh
+
+I fell asleep in daylight
+So few have ever felt nice
+
+So she did know
+I did not know, oh
+So she did know
+I did not know, oh</p>
+  </div>
+
+  <div class="song" id="it-hurts-me">
+    <h2>It Hurts Me</h2>
+    <p>(no lyrics)</p>
+  </div>
+
+  <div class="song" id="acid-airplane">
+    <h2>Acid Airplane</h2>
+    <p>I took acid on airplane
+I fell through the blue sky
+In beautiful view
+I felt a real renewal
+I looked around and saw
+The beautiful truth
+
+And you know it well
+The lifeless road
+And it's all you see
+The pure glass cold
+
+I was born with this cry
+I made myself to see
+I'm made of oceans
+I was born by the night
+I made myself to breath
+Ephemeral tides
+
+And it's all you see
+The pure glass (cold)
+
+And it's all I see
+You don't know
+And it's all I breathe
+It's what I sow
+
+Yea, Beach House is playing at my house
+My house</p>
+  </div>
+
+  <div class="song" id="61">
+    <h2>61</h2>
+    <p>Soft like the complete relief
+Of the new day
+I felt this
+And I've become disinterested
+I was brief
+And walked away
+
+Oh no, something came in your eyes
+I fell down
+I looked in vain
+
+I just wanted you to know
+That as all things
+Grow and fade
+The present still
+Is holding
+Onto something
+We can't see</p>
+  </div>
+
+  <div class="song" id="like-dirt-we-will-wash-away">
+    <h2>Like Dirt, We Will Wash Away And Become One With The Sunset</h2>
+    <p>(no lyrics)</p>
+  </div>
+
+  <div class="song" id="soft-light-closure">
+    <h2>Soft Light Closure</h2>
+    <p>(no lyrics)</p>
+  </div>
+
+  <div class="song" id="my-own-bed">
+    <h2>My Own Bed</h2>
+    <p>Cold in a vacuum
+I'm slowly freed
+Of this feeling
+So I take a big leap
+Into the snow
+Of the unknown
+
+Endless dream
+Peaks of resonating cries
+I look at the perfect pale light
+I felt surreal, and I was
+Where emptiness is clean and raw
+Sleep like I was there with your soft hair
+Sleep carelessly into the night
+The sun shines
+
+Closed eyes
+And I'm floating
+My mind is clear
+And it's going
+
+Endless dream
+Peaks of resonating cries
+I look at the perfect pale light
+I felt surreal, and I was
+Where emptiness is clean raw
+Sleep like I was there with your soft hair
+Sleep carelessly into the night
+The sun shines</p>
+  </div>
+
+  <div class="song" id="cowboy-season">
+    <h2>Cowboy Season</h2>
+    <p>(no lyrics)</p>
+  </div>
+
+  <div class="song" id="the-world-as-will-and-representation">
+    <h2>The World As Will And Representation</h2>
+    <p>You came to me like a dream
+Kindness in your eyes but it wasn't clean
+You flooded my heart with hope
+And I watched the pain lift off of me
+You said oh I just need more time
+You said first I need a clear mind
+And you're looking past me
+
+I said oh, it's not
+It's not here
+It's not, it's not
+It's not what you gave me
+It's not what you gave me
+It's not</p>
+  </div>
+
+  <div class="song" id="something-infinite">
+    <h2>Something Infinite</h2>
+    <p>I wanna be abused
+Cause hanging there
+I got what I deserved
+And I spit out concrete
+I hit the floor
+A mighty roar
+And I've been picturing it lately
+I went out in the cold
+On Christmas Eve
+Cause I said somethings I
+Didn't mean
+I slept beneath a tree
+
+And I can't fix it this time
+Slip inside
+Something infinite
+
+And I wanna be adored
+But that door
+I locked it long before
+When I flooded highway shores
+I thought of you
+I thought of you
+
+And I can't fix it this time
+Slip inside
+Something infinite
+And I can't fight it this time
+But I think I might
+Regret it</p>
+  </div>
+
+  <div class="song" id="abstract-fourier-mathematics">
+    <h2>Abstract Fourier Mathematics</h2>
+    <p>(no lyrics)</p>
+  </div>
+
+  <div class="song" id="i-saw-the-waves-crashing-down">
+    <h2>I Saw The Waves Crashing Down And I Was Still</h2>
+    <p>The best and worst part
+Of waking from a dream
+Is that it happened
+And when I sleep again
+It will happen again
+And the big, long sleep
+Is something for another time
+
+The best and worst part
+Of loving you
+Is that it happened
+And when I love again
+It will happen again
+And the big, long love
+Is something for another time
+
+Everything that has happened so far
+Is something we can have
+I want to be a big man
+And I will make my own bed
+Everything always
+Everything always
+
+I came complete, yea
+I saw the waves crashing down
+And I was still
+I saw the weight in your eyes
+I felt your permanent sky
+And so did you
+I saw the cry in your tears
+I felt the love in your fear
+And I stood through</p>
+  </div>
+
+  <div class="song" id="body-undersea">
+    <h2>Body Undersea</h2>
+    <p>You don't love me
+Come on, spit it out
+Oh come on, spit it out
+If one morning I was wide awake
+Kissing your cold face
+
+My empty sea
+Surrounding me
+It emptied me
+And it opened up
+It opened up to let you in
+
+Tell me softly
+You will never leave
+So easy to believe
+If you find my body undersea
+Oh float it home for me
+
+My endless sea
+Surrounding me
+Surrounding me
+And suddenly
+It emptied me
+And it opened up
+It opened up
+It opened up for you</p>
+  </div>
+
+  <div class="song" id="everything-always">
+    <h2>Everything Always</h2>
+    <p>(no lyrics)</p>
+  </div>
+
+  <div class="credits">
+    <p>All songs written, engineered, produced and mixed by Bennett Blumberg
+All songs mastered by Austin Blumberg
+Artwork by Bennett Blumberg</p>
+  </div>
+
+  <div class="song-nav" id="song-nav">
+    <button id="song-up" aria-label="Previous song">
+      <svg width="30" height="14" viewBox="0 0 30 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 12L15 2L28 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button id="song-down" aria-label="Next song">
+      <svg width="30" height="14" viewBox="0 0 30 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 2L15 12L28 2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <script>
+    const songIds = Array.from(document.querySelectorAll('.track-list a')).map(a => a.getAttribute('href').slice(1));
+    const songEls = songIds.map(id => document.getElementById(id));
+
+    const songNav = document.getElementById('song-nav');
+    const upBtn = document.getElementById('song-up');
+    const downBtn = document.getElementById('song-down');
+    const trackListEl = document.querySelector('.track-list');
+
+    function isAtPageBottom() {
+      return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    }
+
+    function getCurrentSongIndex() {
+      if (isAtPageBottom()) {
+        return songEls.length - 1;
+      }
+      for (let i = 0; i < songEls.length; i++) {
+        if (songEls[i].getBoundingClientRect().bottom > 0) {
+          return i;
+        }
+      }
+      return songEls.length - 1;
+    }
+
+    function updateSongNav() {
+      const isVisible = songNav.classList.contains('visible');
+      if (!isVisible) {
+        if (trackListEl.getBoundingClientRect().bottom > 0) {
+          return;
+        }
+        songNav.classList.add('visible');
+      } else {
+        if (window.scrollY <= 1) {
+          songNav.classList.remove('visible');
+          return;
+        }
+      }
+      const i = getCurrentSongIndex();
+      upBtn.disabled = false;
+      downBtn.disabled = i >= songEls.length - 1;
+    }
+
+    function goToSong(i) {
+      if (i < 0 || i >= songEls.length) return;
+      songEls[i].scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('.track-list a').forEach((link, i) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToSong(i);
+      });
+    });
+
+    document.getElementById('back-link').addEventListener('click', (e) => {
+      if (window.history.length > 1) {
+        e.preventDefault();
+        window.history.back();
+      }
+    });
+
+    upBtn.addEventListener('click', () => {
+      const i = getCurrentSongIndex();
+      if (i === 0) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      const atSongTop = songEls[i].getBoundingClientRect().top >= -4;
+      goToSong(atSongTop ? i - 1 : i);
+    });
+    downBtn.addEventListener('click', () => goToSong(getCurrentSongIndex() + 1));
+
+    let navTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!navTicking) {
+        window.requestAnimationFrame(() => {
+          updateSongNav();
+          navTicking = false;
+        });
+        navTicking = true;
+      }
+    }, { passive: true });
+
+    updateSongNav();
+  </script>
+</body>
+</html>
