@@ -135,6 +135,14 @@
       gap: 0.5rem;
     }
 
+    @media (min-width: 900px) {
+      nav {
+        position: absolute;
+        left: 48px;
+        /* top is set via JS to bottom-align with the home-visual image */
+      }
+    }
+
     nav a {
       color: var(--dim);
       text-decoration: none;
@@ -190,17 +198,27 @@
     (function () {
       var img = document.getElementById('home-visual');
       var line = document.getElementById('home-divider-v');
+      var nav = document.querySelector('nav');
 
       function syncLineHeight() {
         line.style.height = img.offsetHeight + 'px';
       }
 
-      if (img.complete) {
-        syncLineHeight();
-      } else {
-        img.addEventListener('load', syncLineHeight);
+      function syncNavBottom() {
+        nav.style.top = (img.offsetTop + img.offsetHeight - nav.offsetHeight) + 'px';
       }
-      window.addEventListener('resize', syncLineHeight);
+
+      function syncAll() {
+        syncLineHeight();
+        syncNavBottom();
+      }
+
+      if (img.complete) {
+        syncAll();
+      } else {
+        img.addEventListener('load', syncAll);
+      }
+      window.addEventListener('resize', syncAll);
     })();
   </script>
 </body>
