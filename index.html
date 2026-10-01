@@ -152,8 +152,10 @@
     @media (min-width: 900px) {
       nav {
         position: absolute;
-        left: 48px;
-        /* top is set via JS to bottom-align with the home-visual image */
+        /* left and top are set via JS, in viewport coordinates, so they
+           stay correct regardless of which ancestor ends up being nav's
+           positioning context (the fadeIn animation's transform makes
+           <main> that context, not <body>). */
       }
     }
 
@@ -206,7 +208,7 @@
 <body>
   <div class="page-bg"></div>
   <main>
-    <img class="home-title" src="images/home-title.png" alt="Dreams We've Had">
+    <img class="home-title" id="home-title" src="images/home-title.png" alt="Dreams We've Had">
     <nav>
       <a href="shop/">Vinyl</a>
       <a href="lyrics/">Lyrics</a>
@@ -223,18 +225,32 @@
       var img = document.getElementById('home-visual');
       var line = document.getElementById('home-divider-v');
       var nav = document.querySelector('nav');
+      var title = document.getElementById('home-title');
 
       function syncLineHeight() {
         line.style.height = img.offsetHeight + 'px';
       }
 
-      function syncNavBottom() {
-        nav.style.top = (img.offsetTop + img.offsetHeight - nav.offsetHeight) + 'px';
+      function syncNavPosition() {
+        // Work entirely in viewport coordinates, then convert into
+        // whatever element nav's "position: absolute" is actually
+        // anchored to (its offsetParent) — this stays correct even if
+        // that ends up being <main> rather than <body>.
+        var parent = nav.offsetParent || document.body;
+        var parentRect = parent.getBoundingClientRect();
+        var titleRect = title.getBoundingClientRect();
+        var imgRect = img.getBoundingClientRect();
+
+        var targetLeft = titleRect.left - parentRect.left;
+        var targetTop = imgRect.bottom - parentRect.top - nav.offsetHeight;
+
+        nav.style.left = targetLeft + 'px';
+        nav.style.top = targetTop + 'px';
       }
 
       function syncAll() {
         syncLineHeight();
-        syncNavBottom();
+        syncNavPosition();
       }
 
       if (img.complete) {
@@ -243,6 +259,10 @@
         img.addEventListener('load', syncAll);
       }
       window.addEventListener('resize', syncAll);
+      // The fadeIn entrance animation shifts things slightly for its
+      // first ~1.4s; re-sync once it settles so the final position is
+      // pixel-accurate rather than based on a mid-animation offset.
+      window.setTimeout(syncAll, 1500);
     })();
   </script>
 </body>
