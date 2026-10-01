@@ -40,6 +40,13 @@
       position: relative;
     }
 
+    @media (max-width: 899px) {
+      body {
+        gap: 0.9rem;
+        padding: 28px 24px 28px 24px;
+      }
+    }
+
     .page-bg {
       position: fixed;
       inset: 0;
@@ -128,6 +135,13 @@
       animation: fadeIn 1.4s ease-out forwards;
     }
 
+    @media (max-width: 899px) {
+      .home-title {
+        width: clamp(130px, 42vw, 190px);
+        margin: 0 0 18px 0;
+      }
+    }
+
     nav {
       display: flex;
       flex-direction: column;
@@ -140,6 +154,16 @@
         position: absolute;
         left: 48px;
         /* top is set via JS to bottom-align with the home-visual image */
+      }
+    }
+
+    @media (max-width: 899px) {
+      nav {
+        gap: 0.3rem;
+      }
+
+      nav a {
+        font-size: 1.05rem;
       }
     }
 
